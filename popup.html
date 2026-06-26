@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Focus Lock</title>
+    <link rel="stylesheet" href="src/popup.css" />
+  </head>
+  <body>
+    <main class="popup">
+      <header class="header">
+        <h1 class="title">Focus Lock</h1>
+        <p class="subtitle">Block a site until the timer runs out — no undo.</p>
+      </header>
+
+      <form id="block-form" class="block-form" novalidate>
+        <div class="field">
+          <label for="url-input" class="field-label">Website to block</label>
+          <input
+            id="url-input"
+            type="text"
+            class="field-input"
+            placeholder="e.g. netflix.com or https://www.reddit.com/r/all"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <p id="domain-hint" class="domain-hint" hidden></p>
+          <p id="url-error" class="field-error" hidden></p>
+        </div>
+
+        <fieldset class="duration-fieldset">
+          <legend class="field-label">Duration</legend>
+          <div class="duration-presets" role="group" aria-label="Duration presets">
+            <button type="button" class="preset-btn" data-hours="1">1h</button>
+            <button type="button" class="preset-btn" data-hours="2">2h</button>
+            <button type="button" class="preset-btn" data-hours="4">4h</button>
+            <button type="button" class="preset-btn" data-midnight>Until midnight</button>
+          </div>
+          <div class="duration-custom">
+            <span class="duration-custom-label">Custom</span>
+            <div class="duration-custom-inputs">
+              <label class="duration-unit">
+                <input
+                  id="custom-hours"
+                  type="number"
+                  min="0"
+                  max="168"
+                  value="0"
+                  aria-label="Hours"
+                />
+                <span>hr</span>
+              </label>
+              <label class="duration-unit">
+                <input
+                  id="custom-minutes"
+                  type="number"
+                  min="0"
+                  max="59"
+                  value="30"
+                  aria-label="Minutes"
+                />
+                <span>min</span>
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="reason-input" class="field-label">
+            Reason <span class="optional">(optional)</span>
+          </label>
+          <input
+            id="reason-input"
+            type="text"
+            class="field-input"
+            placeholder="Why are you locking this?"
+            maxlength="200"
+          />
+        </div>
+
+        <p id="form-feedback" class="form-feedback" hidden></p>
+
+        <button type="submit" id="submit-btn" class="submit-btn">Lock it</button>
+      </form>
+
+      <section class="active-blocks" aria-labelledby="active-blocks-heading">
+        <h2 id="active-blocks-heading" class="section-heading">Active blocks</h2>
+        <p id="blocks-empty" class="blocks-empty">No active blocks.</p>
+        <ul id="blocks-list" class="blocks-list" hidden></ul>
+      </section>
+    </main>
+
+    <script type="module" src="src/popup.js"></script>
+  </body>
+</html>

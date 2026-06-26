@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Focus Lock — Screenshot: Blocked Page</title>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        width: 1280px;
+        height: 800px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background:
+          radial-gradient(circle at top, #eef2ff 0%, transparent 55%),
+          linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .layout {
+        display: flex;
+        gap: 64px;
+        align-items: center;
+      }
+      .card {
+        width: 28rem;
+        padding: 2.5rem 2rem;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid rgba(148, 163, 184, 0.25);
+        border-radius: 1.25rem;
+        box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
+      }
+      .lock-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 3.5rem;
+        height: 3.5rem;
+        margin-bottom: 1rem;
+        color: #4f46e5;
+        background: #eef2ff;
+        border-radius: 999px;
+      }
+      .lock-icon svg { width: 1.75rem; height: 1.75rem; }
+      .eyebrow {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #64748b;
+        margin-bottom: 0.75rem;
+      }
+      .headline {
+        font-size: 1.875rem;
+        font-weight: 650;
+        line-height: 1.25;
+        color: #0f172a;
+        margin-bottom: 1.5rem;
+      }
+      .domain { color: #4338ca; }
+      .countdown-label { font-size: 0.875rem; color: #64748b; margin-bottom: 0.35rem; }
+      .countdown {
+        font-size: 3.5rem;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: -0.02em;
+        color: #312e81;
+        margin-bottom: 1.5rem;
+      }
+      .reason {
+        padding: 0.875rem 1rem;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: #334155;
+        background: #f8fafc;
+        border-left: 3px solid #818cf8;
+        border-radius: 0.5rem;
+        text-align: left;
+        margin-bottom: 1.25rem;
+      }
+      .footnote { font-size: 0.8125rem; color: #94a3b8; line-height: 1.5; }
+      .hero { max-width: 380px; }
+      .hero h2 { font-size: 32px; font-weight: 700; letter-spacing: -0.03em; color: #0f172a; margin-bottom: 12px; }
+      .hero p { font-size: 17px; color: #475569; line-height: 1.55; }
+      .url-bar {
+        margin-top: 24px;
+        padding: 10px 14px;
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        font-size: 13px;
+        color: #64748b;
+        font-family: ui-monospace, monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <div class="hero">
+        <h2>Stay on track</h2>
+        <p>When you visit a locked site, Focus Lock shows a calm countdown — no bypass button.</p>
+        <div class="url-bar">netflix.com/browse/genre/83 → blocked</div>
+      </div>
+      <div class="card">
+        <div class="lock-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+            <rect x="5" y="11" width="14" height="10" rx="2" />
+            <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+          </svg>
+        </div>
+        <p class="eyebrow">Focus Lock</p>
+        <h1 class="headline"><span class="domain">netflix.com</span> is locked</h1>
+        <p class="countdown-label">Time remaining</p>
+        <p class="countdown">1:47:32</p>
+        <p class="reason">Finish the report before tonight</p>
+        <p class="footnote">This block cannot be undone. Subdomains and all paths are included.</p>
+      </div>
+    </div>
+  </body>
+</html>

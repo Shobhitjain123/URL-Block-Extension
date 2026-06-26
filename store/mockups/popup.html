@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Focus Lock — Screenshot: Popup</title>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        width: 1280px;
+        height: 800px;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        background: linear-gradient(135deg, #f7f6f3 0%, #e7e5e4 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .frame {
+        display: flex;
+        gap: 48px;
+        align-items: flex-start;
+      }
+      .browser {
+        width: 380px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 24px 64px rgba(28, 25, 23, 0.15);
+        border: 1px solid #e7e5e4;
+        overflow: hidden;
+      }
+      .browser-bar {
+        height: 36px;
+        background: #f5f5f4;
+        border-bottom: 1px solid #e7e5e4;
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        gap: 6px;
+      }
+      .dot { width: 10px; height: 10px; border-radius: 50%; }
+      .dot-r { background: #fca5a5; }
+      .dot-y { background: #fcd34d; }
+      .dot-g { background: #86efac; }
+      .popup { padding: 16px; background: #f7f6f3; }
+      .title { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; color: #1c1917; }
+      .subtitle { font-size: 12px; color: #78716c; margin-top: 4px; margin-bottom: 16px; }
+      .card {
+        background: #fff;
+        border: 1px solid #e7e5e4;
+        border-radius: 10px;
+        padding: 14px;
+        box-shadow: 0 1px 3px rgba(28, 25, 23, 0.08);
+      }
+      .label { font-size: 12px; font-weight: 600; color: #44403c; margin-bottom: 6px; }
+      .input {
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid #d6d3d1;
+        border-radius: 8px;
+        font-size: 13px;
+        color: #1c1917;
+        margin-bottom: 6px;
+      }
+      .hint { font-size: 11px; color: #0f766e; margin-bottom: 12px; }
+      .presets { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+      .preset {
+        padding: 6px 12px;
+        border: 1px solid #d6d3d1;
+        border-radius: 999px;
+        font-size: 12px;
+        background: #fff;
+        color: #44403c;
+      }
+      .preset.active { background: #ccfbf1; border-color: #0f766e; color: #0f766e; font-weight: 600; }
+      .submit {
+        width: 100%;
+        margin-top: 12px;
+        padding: 10px;
+        background: #0f766e;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .section-title { font-size: 13px; font-weight: 700; margin: 16px 0 8px; color: #1c1917; }
+      .block-item {
+        background: #fff;
+        border: 1px solid #e7e5e4;
+        border-radius: 8px;
+        padding: 10px 12px;
+        margin-bottom: 8px;
+      }
+      .block-domain { font-weight: 600; font-size: 13px; color: #1c1917; }
+      .block-time { font-size: 20px; font-weight: 700; color: #0f766e; font-variant-numeric: tabular-nums; }
+      .block-note { font-size: 11px; color: #78716c; margin-top: 2px; }
+      .hero { max-width: 420px; padding-top: 40px; }
+      .hero h2 { font-size: 36px; font-weight: 700; letter-spacing: -0.03em; color: #1c1917; line-height: 1.15; margin-bottom: 16px; }
+      .hero p { font-size: 18px; color: #57534e; line-height: 1.5; }
+      .badge {
+        display: inline-block;
+        background: #ccfbf1;
+        color: #0f766e;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 6px 12px;
+        border-radius: 999px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <div class="hero">
+        <span class="badge">Productivity</span>
+        <h2>Block distractions.<br />No early undo.</h2>
+        <p>Add a site, pick a duration, and stay focused until the timer runs out.</p>
+      </div>
+      <div class="browser">
+        <div class="browser-bar">
+          <span class="dot dot-r"></span>
+          <span class="dot dot-y"></span>
+          <span class="dot dot-g"></span>
+        </div>
+        <div class="popup">
+          <div class="title">Focus Lock</div>
+          <div class="subtitle">Block a site until the timer runs out — no undo.</div>
+          <div class="card">
+            <div class="label">Website to block</div>
+            <div class="input">netflix.com</div>
+            <div class="hint">Will block: netflix.com and everything under it</div>
+            <div class="label">Duration</div>
+            <div class="presets">
+              <span class="preset">1h</span>
+              <span class="preset active">2h</span>
+              <span class="preset">4h</span>
+              <span class="preset">Until midnight</span>
+            </div>
+            <div class="label">Reason <span style="font-weight:400;color:#a8a29e">(optional)</span></div>
+            <div class="input" style="color:#78716c">Finish the report before tonight</div>
+            <button class="submit">Lock it</button>
+          </div>
+          <div class="section-title">Active blocks</div>
+          <div class="block-item">
+            <div class="block-domain">reddit.com</div>
+            <div class="block-time">1:23:45</div>
+            <div class="block-note">Includes subdomains and all paths</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

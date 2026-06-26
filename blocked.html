@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Focus Lock — Blocked</title>
+    <link rel="stylesheet" href="src/blocked.css" />
+  </head>
+  <body>
+    <main class="blocked-page">
+      <div class="blocked-card">
+        <div class="lock-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+            <rect x="5" y="11" width="14" height="10" rx="2" />
+            <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+          </svg>
+        </div>
+
+        <p class="eyebrow">Focus Lock</p>
+
+        <div id="active-view" hidden>
+          <h1 class="headline">
+            <span id="domain-name" class="domain-name"></span> is locked
+          </h1>
+          <p class="countdown-label">Time remaining</p>
+          <p id="countdown" class="countdown" aria-live="polite">--:--</p>
+          <p id="reason" class="reason" hidden></p>
+          <p class="footnote">
+            This block cannot be undone. Subdomains and all paths are included.
+          </p>
+        </div>
+
+        <div id="ended-view" hidden>
+          <h1 class="headline">Block ended</h1>
+          <p class="ended-message">
+            This block has ended — you can navigate normally now.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="src/blocked.js"></script>
+  </body>
+</html>

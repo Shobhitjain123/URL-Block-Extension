@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Focus Lock — Screenshot: Duration</title>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        width: 1280px;
+        height: 800px;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        background: #f7f6f3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .layout { display: flex; gap: 56px; align-items: center; }
+      .hero { max-width: 400px; }
+      .hero h2 {
+        font-size: 34px;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        color: #1c1917;
+        margin-bottom: 14px;
+        line-height: 1.15;
+      }
+      .hero p { font-size: 17px; color: #57534e; line-height: 1.55; }
+      .panel {
+        width: 420px;
+        background: #fff;
+        border: 1px solid #e7e5e4;
+        border-radius: 14px;
+        padding: 28px;
+        box-shadow: 0 20px 50px rgba(28, 25, 23, 0.1);
+      }
+      .panel h3 { font-size: 16px; font-weight: 700; margin-bottom: 20px; color: #1c1917; }
+      .label { font-size: 12px; font-weight: 600; color: #44403c; margin-bottom: 10px; }
+      .presets { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+      .preset {
+        padding: 14px 16px;
+        border: 2px solid #e7e5e4;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 600;
+        text-align: center;
+        color: #44403c;
+        background: #fafaf9;
+      }
+      .preset.active {
+        border-color: #0f766e;
+        background: #ccfbf1;
+        color: #0f766e;
+      }
+      .custom {
+        border-top: 1px solid #e7e5e4;
+        padding-top: 20px;
+      }
+      .custom-row { display: flex; gap: 16px; align-items: center; }
+      .unit {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .unit input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #d6d3d1;
+        border-radius: 8px;
+        font-size: 22px;
+        font-weight: 700;
+        text-align: center;
+        color: #1c1917;
+      }
+      .unit span { font-size: 12px; color: #78716c; text-align: center; }
+      .note {
+        margin-top: 16px;
+        font-size: 12px;
+        color: #78716c;
+        line-height: 1.45;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <div class="hero">
+        <h2>Flexible durations</h2>
+        <p>Quick presets for common focus sessions, or set a custom hours and minutes lock.</p>
+      </div>
+      <div class="panel">
+        <h3>Choose how long to lock</h3>
+        <div class="label">Presets</div>
+        <div class="presets">
+          <div class="preset">1 hour</div>
+          <div class="preset active">2 hours</div>
+          <div class="preset">4 hours</div>
+          <div class="preset">Until midnight</div>
+        </div>
+        <div class="custom">
+          <div class="label">Custom duration</div>
+          <div class="custom-row">
+            <div class="unit">
+              <input value="1" readonly />
+              <span>hours</span>
+            </div>
+            <div class="unit">
+              <input value="30" readonly />
+              <span>minutes</span>
+            </div>
+          </div>
+          <p class="note">Sub-minute durations round up to the nearest minute. Blocks cannot be shortened once set.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
