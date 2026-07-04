@@ -88,6 +88,17 @@
         <p id="blocks-empty" class="blocks-empty">No active blocks.</p>
         <ul id="blocks-list" class="blocks-list" hidden></ul>
       </section>
+
+      <section class="past-blocks" aria-labelledby="past-blocks-heading">
+        <div class="section-row">
+          <h2 id="past-blocks-heading" class="section-heading">Previously blocked</h2>
+          <button type="button" id="clear-history-btn" class="link-btn" hidden>
+            Clear all
+          </button>
+        </div>
+        <p id="history-empty" class="blocks-empty">No past blocks yet.</p>
+        <ul id="history-list" class="blocks-list" hidden></ul>
+      </section>
     </main>
 
     <script type="module" src="src/popup.js"></script>

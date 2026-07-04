@@ -1,9 +1,13 @@
 import { normalizeToDomain } from "./lib/domain.js";
 import {
   allocateRuleId,
+  clearHistory,
   getBlocks,
+  getHistory,
   removeBlock,
+  removeHistory,
   upsertBlock,
+  upsertHistory,
 } from "./lib/storage.js";
 
 const ALARM_PREFIX = "block:";
@@ -185,6 +189,11 @@ async function handleAddBlock(message) {
   });
   await upsertBlock(block);
   await scheduleBlockAlarm(domain, message.expiresAt);
+  await upsertHistory({
+    domain,
+    durationMs: message.expiresAt - now,
+    reason: message.reason ?? "",
+  });
 
   return { status: "ok" };
 }
@@ -203,6 +212,33 @@ async function handleGetBlocks() {
   return { status: "ok", blocks: active };
 }
 
+async function handleGetHistory() {
+  const history = await getHistory();
+  const entries = Object.values(history).sort(
+    (a, b) => b.lastBlockedAt - a.lastBlockedAt
+  );
+
+  return { status: "ok", history: entries };
+}
+
+/**
+ * @param {{ domain?: string }} message
+ */
+async function handleRemoveHistory(message) {
+  const domain = normalizeToDomain(message.domain ?? "");
+  if (!domain) {
+    return { status: "invalid" };
+  }
+
+  await removeHistory(domain);
+  return { status: "ok" };
+}
+
+async function handleClearHistory() {
+  await clearHistory();
+  return { status: "ok" };
+}
+
 /**
  * @param {object} message
  */
@@ -214,6 +250,12 @@ async function handleMessage(message) {
       return handleAddBlock(message);
     case "GET_BLOCKS":
       return handleGetBlocks();
+    case "GET_HISTORY":
+      return handleGetHistory();
+    case "REMOVE_HISTORY":
+      return handleRemoveHistory(message);
+    case "CLEAR_HISTORY":
+      return handleClearHistory();
     default:
       return { status: "unknown_message" };
   }

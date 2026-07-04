@@ -54,3 +54,44 @@ export async function allocateRuleId() {
   await chrome.storage.local.set({ nextRuleId: nextRuleId + 1 });
   return nextRuleId;
 }
+
+/**
+ * @returns {Promise<Record<string, object>>}
+ */
+export async function getHistory() {
+  const data = await chrome.storage.local.get(["history"]);
+  return data.history ?? {};
+}
+
+/**
+ * @param {{ domain: string, durationMs: number, reason?: string }} entry
+ */
+export async function upsertHistory({ domain, durationMs, reason = "" }) {
+  const history = await getHistory();
+  const existing = history[domain];
+  const now = Date.now();
+
+  history[domain] = {
+    domain,
+    reason,
+    lastDurationMs: durationMs,
+    lastBlockedAt: now,
+    timesBlocked: (existing?.timesBlocked ?? 0) + 1,
+  };
+
+  await chrome.storage.local.set({ history });
+}
+
+/**
+ * @param {string} domain
+ */
+export async function removeHistory(domain) {
+  const history = await getHistory();
+  const next = { ...history };
+  delete next[domain];
+  await chrome.storage.local.set({ history: next });
+}
+
+export async function clearHistory() {
+  await chrome.storage.local.set({ history: {} });
+}
